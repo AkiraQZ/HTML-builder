@@ -7,13 +7,14 @@ module.exports = {
   extends: ['eslint:recommended', 'prettier'],
   plugins: ['prettier'],
   parserOptions: {
+    sourceType: 'module',
     ecmaVersion: 13,
   },
   rules: {
     indent: ['error', 2],
     quotes: ['error', 'single'],
     semi: ['error', 'always'],
-    'prettier/prettier': 'error',
+    'prettier/prettier': ['error', { endOfLine: 'auto' }],
   },
   ignorePatterns: ['03-files-in-folder/secret-folder/**/*.js'],
 };
