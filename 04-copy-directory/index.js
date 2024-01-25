@@ -3,8 +3,12 @@ const path = require('path');
 
 async function copyDir(source, destination) {
   try {
-    await fs.access(destination);
-    await fs.rm(destination, { recursive: true });
+    try {
+      await fs.access(destination);
+      await fs.rm(destination, { recursive: true });
+    } catch (err) {
+      console.log('');
+    }
     await fs.mkdir(destination);
     const files = await fs.readdir(source);
     for (const file of files) {
