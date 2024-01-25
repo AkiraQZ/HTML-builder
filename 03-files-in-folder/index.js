@@ -16,12 +16,13 @@ fs.readdir(folderPath, (err, files) => {
         console.error('Error getting file stats:', err);
         return;
       }
-
-      const fileSize = stats.size;
-      const fileExtension = path.extname(file);
-      const formattedSize = `${fileSize} bytes`;
-
-      console.log(`${file} - ${fileExtension} - ${formattedSize}`);
+      if (stats.isFile()) {
+        const fileSize = stats.size;
+        const fileExtension = path.extname(file);
+        const fileName = path.basename(file, fileExtension);
+        const formattedSize = `${fileSize} bytes`;
+        console.log(`${fileName} - ${fileExtension} - ${formattedSize}`);
+      }
     });
   });
 });
