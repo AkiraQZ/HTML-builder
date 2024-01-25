@@ -3,6 +3,15 @@ const path = require('path');
 
 async function createProjectDist() {
   try {
+    try {
+      await fs.access(
+        '06-build-page/project-dist',
+        fs.constants.R_OK | fs.constants.W_OK,
+      );
+      await fs.rm('06-build-page/project-dist', { recursive: true });
+    } catch {
+      console.log('project-dist already exist. rewriteing.');
+    }
     await fs.mkdir('06-build-page/project-dist');
     console.log('project-dist folder created successfully');
   } catch (err) {
@@ -91,11 +100,11 @@ async function copyAssets() {
 
 async function app() {
   try {
-    createProjectDist();
+    await createProjectDist();
     replaceTags();
     compileStyles();
     copyAssets();
-    console.log('app created');
+    console.log('app builded');
   } catch (err) {
     console.error('Error of building file:', err);
   }
