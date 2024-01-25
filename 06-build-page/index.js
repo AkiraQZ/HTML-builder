@@ -48,7 +48,9 @@ async function compileStyles() {
     for (const style of styles) {
       const stylePath = path.join(stylesDir, style);
       const styleContent = await fs.readFile(stylePath, 'utf-8');
-      compiledStyles += styleContent;
+      if (style.endsWith('.css')) {
+        compiledStyles += styleContent;
+      }
     }
     await fs.writeFile('06-build-page/project-dist/style.css', compiledStyles);
     console.log('styles compiled successfully');
