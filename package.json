@@ -8,7 +8,9 @@
     "ci:format": "prettier --check .",
     "01-read-file": "node run 01-read-file/index.js",
     "02-write-file": "node run 02-write-file/index.js",
-    "03-files-in-folder": "node run 03-files-in-folder/index.js"
+    "03-files-in-folder": "node run 03-files-in-folder/index.js",
+    "04-copy-directory": "node run 04-copy-directory/index.js",
+    "05-merge-styles": "node run 05-merge-styles/index.js"
   },
   "author": "evgeniimal",
   "license": "ISC",
